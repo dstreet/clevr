@@ -76,32 +76,39 @@ class App extends EventEmitter {
 		if (!required && !methods) return this.registerService(name, [], [], false)
 		if (typeof methods === 'undefined') return this.registerService(name, [], required)
 		if (typeof localOnly === 'undefined' && typeof methods === 'number') return this.registerService(name, required, [], methods)
+
+		const service = new Service(name)
 		
 		if (required.length) {
 			this.deferredServices.push(
 				this.requireServices.apply(this, required)
 					.then(services => {
-						this.registerService(name, [], methods.apply(null, services), localOnly)
+						const serviceMethods = typeof methods === 'function' ? methods.apply(null, services) : methods
+						this.attachMethods(service, serviceMethods)
+						this.server.addService(service, localOnly ? 0 : undefined)
 					})
 					.catch(console.log.bind(console))
 			)
-
-			return this
+		} else {
+			this.attachMethods(service, methods)
+			this.server.addService(service, localOnly ? 0 : undefined)
 		}
-
-		const service = new Service(name)
-		
-		methods.forEach(method => {
-			service.register(method.name, method.cb, method.type)
-		})
-
-		this.server.addService(service, localOnly ? 0 : undefined)
 
 		return service
 	}
 
 	registerLocalService(...args) {
 		return this.registerService.apply(this, args.concat(true))
+	}
+
+	attachMethods(service, methods) {
+		if (!Array.isArray(methods)) return service
+		
+		methods.forEach(method => {
+			service.register(method.name, method.cb, method.type)
+		})
+
+		return service
 	}
 
 	requireServices(...services) {
