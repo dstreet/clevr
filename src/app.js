@@ -101,7 +101,9 @@ class App extends EventEmitter {
 		return this.registerService.apply(this, args.concat(true))
 	}
 
-	attachMethods(service, methods) {
+	attachMethods(service, _methods) {
+		const methods = typeof _methods === 'function' ? _methods() : _methods
+		
 		if (!Array.isArray(methods)) return service
 		
 		methods.forEach(method => {
