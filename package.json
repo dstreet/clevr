@@ -17,14 +17,15 @@
     "test": "jest",
     "docs": "scripts/docs",
     "lint": "eslint .",
+    "build": "webpack",
     "precommit": "npm run lint",
-    "prepublish": "webpack",
+    "prepublish": "npm run build",
     "dev": "webpack -w"
   },
   "author": "David Street <street.davide@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "microserv": "^0.8.1",
+    "microserv": "^0.8.2",
     "polymod": "^3.3.1"
   },
   "devDependencies": {
