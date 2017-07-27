@@ -19,7 +19,9 @@ test('Models should be exposed as services', () => {
 		queries: [],
 		describe: () => {},
 		get: () => {},
-		create: () => {}
+		create: () => {},
+		getMutationMiddleware: () => {},
+		addMutationMiddleware: () => {}
 	}
 
 	app.addModel('test', model)

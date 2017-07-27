@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "microserv": "^0.8.2",
-    "polymod": "^4.0.0"
+    "polymod": "^4.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

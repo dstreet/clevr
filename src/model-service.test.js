@@ -1,6 +1,6 @@
 /* eslint-env jest */
 const ModelService = require('./model-service')
-const { Model, Schema, Query, MemStore } = require('polymod')
+const { Model, MemSource, Query, MemStore } = require('polymod')
 
 const store = new MemStore({
 	data: [
@@ -14,10 +14,10 @@ const store = new MemStore({
 		}
 	]
 })
-const DataSchema = new Schema(store, 'data')
+const DataSource = new MemSource(store, 'data')
 const Data = Model
 	.create()
-	.addSource('data', DataSchema)
+	.addSource('data', DataSource)
 	.describe({
 		id: {
 			type: Number,
@@ -31,8 +31,11 @@ const Data = Model
 	.addQuery('default',
 		Query
 			.create()
-			.input(id => ({ data: { id } }))
-			.populate('data', ({ data }) => ({ id: data.id }))
+			.addPopulation({
+				name: 'data',
+				operation: 'read',
+				selector: ({ input }) => ({ id: input })
+			})
 	)
 
 test('Creates descriptor with model methods', () => {

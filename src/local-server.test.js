@@ -1,6 +1,6 @@
 /* eslint-env jest */
 const LocalServer = require('./local-server')
-const { Service } = require('microserv')
+const { Service, ClientService } = require('microserv')
 
 test('Server should respond to its own services', () => {
 	const server = new LocalServer('test')
@@ -17,7 +17,7 @@ test('Server should resolve with ClientService instances', () => {
 
 	const promise = server.need('service_a')
 		.then(([ service_a ]) => {
-			expect(service_a).toHaveProperty('service', serviceA)
+			expect(service_a).toBeInstanceOf(ClientService)
 			expect(service_a).toHaveProperty('descriptor', {
 				type: 'service',
 				name: 'service_a',
