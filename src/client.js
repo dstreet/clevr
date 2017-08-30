@@ -1,9 +1,10 @@
-const { Client: MicroservClient } = require('microserv')
+const { Client } = require('microserv')
 
-class Client {
-	constructor() {
-		this._client = new MicroservClient({
-			serviceTransform: this._serviceMethodTransform.bind(this)
+class ClevrClient {
+	constructor(opts) {
+		this._client = new Client({
+			serviceTransform: this._serviceMethodTransform.bind(this),
+			...opts
 		})
 	}
 
@@ -33,4 +34,4 @@ class Client {
 	}
 }
 
-module.exports = Client
+module.exports = ClevrClient
