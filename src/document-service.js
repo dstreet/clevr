@@ -39,6 +39,7 @@ class DocumentService extends Service {
 					return docService.serviceDescriptor
 				})
 				.catch(err => {
+					// eslint-disable-next-line no-console
 					console.log(err)
 				})
 		}, 'serviceDescriptor')

@@ -30,6 +30,7 @@ class ModelService extends Service {
 
 							return createDocumentService.call(this, doc)
 						})
+						// eslint-disable-next-line no-console
 						.catch(console.log.bind())
 				}, 'serviceDescriptor')
 			}
@@ -46,6 +47,7 @@ class ModelService extends Service {
 
 					return docService
 				})
+				// eslint-disable-next-line no-console
 				.catch(console.log.bind())
 		}, 'serviceDescriptor')
 		

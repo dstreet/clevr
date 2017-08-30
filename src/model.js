@@ -55,7 +55,7 @@ function type(type) {
 	}
 }
 
-function required(target, property, descriptor) {
+function required(target, property) {
 	if (!target.properties) target.properties = {}
 	if (!target.properties[property]) target.properties[property] = {}
 

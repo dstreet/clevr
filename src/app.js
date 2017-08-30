@@ -87,6 +87,7 @@ class App extends EventEmitter {
 						this.attachMethods(service, serviceMethods)
 						this.server.addService(service, localOnly ? 0 : undefined)
 					})
+					// eslint-disable-next-line no-console
 					.catch(console.log.bind(console))
 			)
 		} else {

@@ -40,7 +40,7 @@ test('Service methods should apply the service transform function', () => {
 		.then(([ service_a ]) => {
 			return service_a.add([1,2])
 		})
-		.then(res => {
+		.then(() => {
 			expect(mockTransform.mock.calls.length).toBe(1)
 		})
 
