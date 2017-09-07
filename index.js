@@ -1,6 +1,4 @@
-const model = require('./lib/model')
-
-module.exports = Object.assign({}, model, {
+module.exports = {
 	App: require('./lib/app'),
 	Client: require('./lib/client')
-})
+}
