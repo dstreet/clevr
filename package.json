@@ -25,7 +25,8 @@
   "author": "David Street <street.davide@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "microserv": "^0.11.0"
+    "microserv": "^0.11.0",
+    "polymod": "^4.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
