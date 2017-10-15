@@ -14,7 +14,7 @@
     "url": "git@github.com:dstreet/clevr.git"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "docs": "scripts/docs",
     "lint": "eslint .",
     "build": "webpack",
