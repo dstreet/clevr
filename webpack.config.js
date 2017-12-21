@@ -1,12 +1,9 @@
 const path = require('path')
-const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
-	target: 'node',
-	externals: [nodeExternals()],
+	target: 'web',
 	entry: {
-		index: './src/index.js',
-		browser: './src/index.browser.js'
+		browser: './index.browser.js'
 	},
 	output: {
 		filename: '[name].js',
@@ -22,13 +19,9 @@ module.exports = {
 				use: [{
 					loader: 'babel-loader',
 					options: {
-						presets: ['stage-3']
+						presets: ['stage-3', 'es2015']
 					}
 				}]
-			},
-			{
-				test: /\.node$/,
-				use: 'node-loader'
 			}
 		]
 	}

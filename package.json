@@ -1,13 +1,13 @@
 {
   "name": "clevr",
-  "version": "0.1.1",
+  "version": "0.2.1-10",
   "description": "A distributed application framework",
   "keywords": [
     "microservices",
     "web framework",
     "framework"
   ],
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "browser": "./dist/browser.js",
   "repository": {
     "type": "git",
@@ -17,18 +17,19 @@
     "test": "jest",
     "docs": "scripts/docs",
     "lint": "eslint .",
+    "build": "webpack",
     "precommit": "npm run lint",
-    "prepublish": "webpack",
+    "prepublish": "npm run build",
     "dev": "webpack -w"
   },
   "author": "David Street <street.davide@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "microserv": "^0.8.1",
-    "polymod": "^3.3.1"
+    "microserv": "^0.12.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -38,9 +39,7 @@
     "eslint": "^3.11.1",
     "husky": "^0.11.9",
     "jest": "^19.0.2",
-    "node-loader": "^0.6.0",
-    "webpack": "^2.3.3",
-    "webpack-node-externals": "^1.5.4"
+    "webpack": "^2.3.3"
   },
   "engines": {
     "node": ">=6.0.0"
