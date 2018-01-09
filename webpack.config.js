@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
 	target: 'web',
 	entry: {
-		browser: './index.browser.js'
+		browser: ['babel-polyfill', './index.browser.js']
 	},
 	output: {
 		filename: '[name].js',
