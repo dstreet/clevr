@@ -64,7 +64,7 @@ the client to handle that situation appropriately.
 
 ## Handling closed connections
 
-During the lifecycle of a server, it is possible that one its service
+During the lifecycle of a server, it is possible that one of its service
 dependencies goes down. If the websocket connection is dropped for any reason,
 the service will emit a "close" event. If the service comes back online, it
 will be picked up again by the client, and a "reopenned" event will be fired
